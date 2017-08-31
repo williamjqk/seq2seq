@@ -60,10 +60,10 @@ def _maybe_load_yaml(item):
   """
   if isinstance(item, six.string_types):
     return yaml.load(item)
-  elif isinstance(item, dict):
+  elif isinstance(item, dict) or isinstance(item, list):
     return item
   else:
-    raise ValueError("Got {}, expected YAML string or dict", type(item))
+    raise ValueError("Got {}, expected YAML string or dict or list of dicts", type(item))
 
 
 def _deep_merge_dict(dict_x, dict_y, path=None):
